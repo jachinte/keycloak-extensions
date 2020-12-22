@@ -26,7 +26,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <Dependencies>org.keycloak.keycloak-server-spi-private,org.keycloak.keycloak-services,org.apache.commons.configuration2</Dependencies>
+              <Dependencies>org.keycloak.keycloak-server-spi-private,org.keycloak.keycloak-services</Dependencies>
             </manifestEntries>
           </archive>
         </configuration>

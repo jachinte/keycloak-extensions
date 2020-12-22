@@ -11,6 +11,7 @@
 	<modules>
 		<module>provider-domain</module>
 		<module>spi-event-listener</module>
+		<module>spi-event-listener-ear</module>
 		<module>spi-mail-template-override</module>
 		<module>spi-registration-profile</module>
 		<module>spi-resource</module>

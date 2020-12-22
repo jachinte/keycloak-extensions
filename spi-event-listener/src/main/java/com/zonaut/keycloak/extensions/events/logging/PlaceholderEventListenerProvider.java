@@ -12,9 +12,19 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.models.RealmProvider;
 import org.keycloak.models.UserModel;
 
+import java.io.File;
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.FileBasedConfiguration;
+import org.apache.commons.configuration2.PropertiesConfiguration;
+import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Parameters;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
 public class PlaceholderEventListenerProvider implements EventListenerProvider {
 
     private static final Logger log = Logger.getLogger(PlaceholderEventListenerProvider.class);
+
+    private static final Configuration CONFIG = PlaceholderEventListenerProvider.config();
 
     private final KeycloakSession session;
     private final RealmProvider model;
@@ -24,11 +34,27 @@ public class PlaceholderEventListenerProvider implements EventListenerProvider {
         this.model = session.realms();
     }
 
+    private static FileBasedConfiguration config() {
+        final Parameters params = new Parameters();
+        final File file = new File("listener.properties");
+        final FileBasedConfigurationBuilder<FileBasedConfiguration> builder =
+            new FileBasedConfigurationBuilder<FileBasedConfiguration>(
+                PropertiesConfiguration.class
+            ).configure(params.fileBased().setFile(file));
+        try {
+            return builder.getConfiguration();
+        } catch (final ConfigurationException exception) {
+            throw new RuntimeException("Error loadng config", exception);
+        }
+    }
+
     @Override
     public void onEvent(Event event) {
         log.infof("## NEW %s EVENT", event.getType());
         log.info("-----------------------------------------------------------");
         event.getDetails().forEach((key, value) -> log.info(key + ": " + value));
+
+        log.info("MyProperty: " + CONFIG.getString("myproperty"));
 
         // USE CASE SCENARIO, I'm sure there are better use case scenario's :p
         //
