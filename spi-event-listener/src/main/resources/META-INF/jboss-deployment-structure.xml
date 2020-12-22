@@ -3,6 +3,7 @@
     <deployment>
         <dependencies>
             <module name="org.keycloak.keycloak-services" />
+            <module name="org.apache.commons.configuration2" />
         </dependencies>
     </deployment>
 </jboss-deployment-structure>

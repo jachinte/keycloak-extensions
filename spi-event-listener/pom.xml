@@ -23,6 +23,9 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.wildfly.plugins/wildfly-maven-plugin -->
         <maven-wildfly-plugin.version>2.0.2.Final</maven-wildfly-plugin.version>
+
+        <apache-commons-config.version>2.7</apache-commons-config.version>
+        <apache-commons-beanutils.version>1.9.4</apache-commons-beanutils.version>
     </properties>
 
     <dependencies>
@@ -43,6 +46,17 @@
             <artifactId>keycloak-services</artifactId>
             <version>${keycloak.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- Properties -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>${apache-commons-config.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${apache-commons-beanutils.version}</version>
         </dependency>
     </dependencies>
 
