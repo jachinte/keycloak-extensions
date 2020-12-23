@@ -82,8 +82,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <!-- <Dependencies>org.keycloak.keycloak-server-spi-private,org.keycloak.keycloak-services,org.apache.commons.configuration2</Dependencies> -->
-                            <Dependencies>org.keycloak.keycloak-server-spi-private,org.keycloak.keycloak-services</Dependencies>
+                            <Dependencies>org.keycloak.keycloak-server-spi-private,org.keycloak.keycloak-services,org.jboss.logging</Dependencies>
                         </manifestEntries>
                     </archive>
                 </configuration>

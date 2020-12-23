@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-deployment-structure>
-    <ear-subdeployments-isolated>false</ear-subdeployments-isolated>
-    <deployment>
-        <module-alias name="deployment.spi-event-listener-ear"/>
-    </deployment>
-    <sub-deployment name="spi-event-listener-module.jar">
+    <module name="deployment.spi-event-listener-ear">
+        <resources>
+            <resource-root path="lib/commons-beanutils-commons-beanutils-1.9.4.jar"/>
+            <resource-root path="lib/commons-collections-commons-collections-3.2.2.jar"/>
+            <resource-root path="lib/commons-logging-commons-logging-1.2.jar"/>
+            <resource-root path="lib/org.apache.commons-commons-configuration2-2.7.jar"/>
+            <resource-root path="lib/org.apache.commons-commons-lang3-3.9.jar"/>
+            <resource-root path="lib/org.apache.commons-commons-text-1.8.jar"/>
+        </resources>
         <dependencies>
-            <module name="org.keycloak.keycloak-services"/>
+            <module name="org.keycloak.keycloak-server-spi" export="true"/>
+            <module name="org.keycloak.keycloak-server-spi-private" export="true"/>
+            <module name="org.keycloak.keycloak-services" export="true"/>
+            <module name="org.jboss.logging" export="true"/>
         </dependencies>
-    </sub-deployment>
+    </module>
 </jboss-deployment-structure>

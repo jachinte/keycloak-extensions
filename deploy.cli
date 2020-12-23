@@ -1,0 +1,11 @@
+embed-server --std-out=echo  --server-config=standalone-ha.xml
+if (outcome != success) of /core-service=module-loading/:list-resource-loader-paths(module=spi-event-listener)
+    echo adding module spi-event-listener
+    batch
+    module add --name=spi-event-listener --resources=/opt/jboss/keycloak/spi-event-listener-0.0.1-SNAPSHOT.jar --dependencies=org.keycloak.keycloak-core,org.keycloak.keycloak-services,org.keycloak.keycloak-server-spi,org.keycloak.keycloak-server-spi-private,org.jboss.logging
+    /subsystem=keycloak-server:list-add(name=providers, value=module:spi-event-listener)
+    run-batch
+else
+    echo module spi-event-listener already installed
+end-if
+stop-embedded-server

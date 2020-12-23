@@ -2,8 +2,10 @@
 <jboss-deployment-structure>
     <deployment>
         <dependencies>
-            <module name="org.keycloak.keycloak-services" />
-            <module name="org.apache.commons.configuration2" />
+            <module name="org.keycloak.keycloak-server-spi"/>
+            <module name="org.keycloak.keycloak-server-spi-private"/>
+            <module name="org.keycloak.keycloak-services"/>
+            <module name="org.jboss.logging"/>
         </dependencies>
     </deployment>
 </jboss-deployment-structure>
